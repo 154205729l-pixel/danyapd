@@ -79,9 +79,21 @@
       }
 
       var html = '';
-      html += '<div class="q-number">Q' + (qIdx + 1) + '</div>';
-      html += '<div class="q-title">' + escapeHtml(q.title) + '</div>';
+      // 帖子头部：头像 + 标题 + 时间
+      html += '<div class="q-header">';
+      html += '  <div class="q-avatar"><img src="img/avatar-default.png" alt="" onerror="this.style.display=\'none\'"></div>';
+      html += '  <div class="q-header-info">';
+      html += '    <div class="q-title">' + escapeHtml(q.title) + '</div>';
+      html += '    <div class="q-time">刚刚</div>';
+      html += '  </div>';
+      html += '</div>';
+      // 帖子正文
       html += '<div class="q-text">' + escapeHtml(q.question) + '</div>';
+      // 分隔引导
+      html += '<div class="q-divider">';
+      html += '  <div class="q-divider-bar"></div>';
+      html += '  <div class="q-divider-text">你会选择：</div>';
+      html += '</div>';
       html += '<div class="q-options">';
 
       if (q.dimension === 'cross') {
