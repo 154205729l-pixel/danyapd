@@ -101,12 +101,22 @@ html, body {
 
 /* ========== 答题页 ========== */
 #page-quiz {
-  padding-top: 20px;
+  padding-top: 0;
   padding-bottom: 0;
   overflow: hidden;
 }
 
-/* 顶部栏 */
+/* 顶部栏 — 吸顶 */
+.quiz-top-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: #0a0e17;
+  padding: 16px 24px 0;
+}
+
 .quiz-header {
   display: flex;
   align-items: center;
@@ -145,7 +155,7 @@ html, body {
   flex: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 20px 0 100px 0;
+  padding: 64px 0 100px 0;
 }
 
 /* 单题卡片 */
@@ -233,8 +243,30 @@ html, body {
   z-index: 10;
 }
 
+.quiz-footer-btns {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-prev {
+  flex-shrink: 0;
+  padding: 16px 24px;
+  border: 1.5px solid #252d3a;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #8892a4;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.btn-prev:active {
+  transform: scale(0.97);
+  border-color: #4b5563;
+}
+
 .btn-next {
-  width: 100%;
+  flex: 1;
   padding: 16px 0;
   border: none;
   border-radius: 12px;
