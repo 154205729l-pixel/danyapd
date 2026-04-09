@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>球迷人格测试</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ====== 开始页 ====== -->
+  <div id="page-start" class="page active">
+    <span class="start-badge">懂球帝出品</span>
+    <h1 class="start-title">你是哪种<br>球迷？</h1>
+    <p class="start-subtitle">22道足球灵魂拷问<br>找到你的球迷人格 & 代表球星</p>
+    <div class="start-stats">
+      <div class="stat">
+        <div class="stat-num">16</div>
+        <div class="stat-label">球迷类型</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">22</div>
+        <div class="stat-label">道题目</div>
+      </div>
+    </div>
+    <button id="btn-start" class="btn-start">开始测试</button>
+    <p class="start-footer">仅供娱乐 · 约需3分钟</p>
+  </div>
+
+  <!-- ====== 答题页 ====== -->
+  <div id="page-quiz" class="page">
+    <div class="quiz-header">
+      <span id="quiz-dim-label" class="quiz-dim-label"></span>
+      <span id="quiz-page-num" class="quiz-page-num"></span>
+    </div>
+    <div class="progress-bar-bg">
+      <div id="progress-fill" class="progress-bar-fill" style="width: 0%"></div>
+    </div>
+    <div id="quiz-container" class="quiz-container"></div>
+    <div id="quiz-footer" class="quiz-footer">
+      <button id="btn-next" class="btn-next">下一页</button>
+    </div>
+  </div>
+
+  <!-- ====== Toast ====== -->
+  <div id="toast" class="toast"></div>
+
+  <!-- ====== 结果页 ====== -->
+  <div id="page-result" class="page">
+    <span class="result-badge">你的球迷人格</span>
+    <div id="result-type" class="result-type"></div>
+    <h2 id="result-name" class="result-name"></h2>
+    <div id="result-star" class="result-star"></div>
+    <p id="result-tagline" class="result-tagline"></p>
+
+    <div id="dimension-bars" class="dimension-bars"></div>
+
+    <div id="paywall" class="paywall">
+      <div class="paywall-title">解锁完整球迷人格解读</div>
+      <button id="btn-unlock-video" class="btn-unlock">看15秒视频，免费解锁</button>
+      <button id="btn-unlock-pay" class="btn-unlock-pay">直接解锁 ¥1.9</button>
+    </div>
+
+    <div id="full-result" class="full-result">
+      <div class="full-result-card">
+        <div class="full-result-label">完整解读</div>
+        <div id="full-result-text" class="full-result-text"></div>
+      </div>
+    </div>
+
+    <button id="btn-retry" class="btn-retry">再测一次</button>
+  </div>
+
+  <script src="js/questions.js"></script>
+  <script src="js/results.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
