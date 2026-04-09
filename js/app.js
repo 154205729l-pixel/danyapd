@@ -13,6 +13,8 @@
     { key: "cross", label: "综合判断", questions: [22,23] }
   ];
 
+  var TOTAL_QUESTIONS = QUESTIONS.length;  // 24
+
   var currentPage = 0;
   var selections = {};  // { questionIndex: selectedValue 或 selectedValues }
 
@@ -25,6 +27,7 @@
   var progressFill = document.getElementById('progress-fill');
   var container   = document.getElementById('quiz-container');
   var btnNext     = document.getElementById('btn-next');
+  var btnPrev     = document.getElementById('btn-prev');
   var toastEl     = document.getElementById('toast');
 
   // ── 开始测试 ──
@@ -37,6 +40,13 @@
   // ── 下一页按钮 ──
   btnNext.addEventListener('click', handleNext);
 
+  // ── 上一页按钮 ──
+  btnPrev.addEventListener('click', function () {
+    if (currentPage > 0) {
+      renderPage(currentPage - 1);
+    }
+  });
+
   // ── 渲染维度页 ──
   function renderPage(pageIndex) {
     currentPage = pageIndex;
@@ -45,10 +55,13 @@
     // 顶部信息
     dimLabel.textContent = pg.label;
     pageNum.textContent = (pageIndex + 1) + ' / ' + PAGES.length;
-    progressFill.style.width = ((pageIndex + 1) / PAGES.length * 100) + '%';
+    updateProgress();
 
     // 按钮文案
     btnNext.textContent = (pageIndex === PAGES.length - 1) ? '查看结果' : '下一页';
+
+    // 第一页隐藏上一页按钮
+    btnPrev.style.display = (pageIndex === 0) ? 'none' : '';
 
     // 生成题目卡片
     container.innerHTML = '';
@@ -110,6 +123,7 @@
 
   // ── 选择/切换选项 ──
   function selectOption(qIdx, value) {
+    var isNewAnswer = (selections[qIdx] === undefined);
     selections[qIdx] = value;
 
     // 更新按钮状态
@@ -128,6 +142,31 @@
         b.classList.toggle('selected', b.getAttribute('data-choice') === value);
       });
     }
+
+    // 更新进度条
+    updateProgress();
+
+    // 答完后自动滚到本页下一道未答题
+    if (isNewAnswer) {
+      var pg = PAGES[currentPage];
+      var currentPos = pg.questions.indexOf(qIdx);
+      for (var i = currentPos + 1; i < pg.questions.length; i++) {
+        var nextQIdx = pg.questions[i];
+        if (selections[nextQIdx] === undefined) {
+          setTimeout(function () {
+            scrollToQuestion(nextQIdx);
+          }, 300);
+          return;
+        }
+      }
+    }
+  }
+
+  // ── 更新进度条（题目级）──
+  function updateProgress() {
+    var answered = Object.keys(selections).length;
+    progressFill.style.width = (answered / TOTAL_QUESTIONS * 100) + '%';
+    pageNum.textContent = answered + ' / ' + TOTAL_QUESTIONS;
   }
 
   // ── 下一页 / 查看结果 ──
