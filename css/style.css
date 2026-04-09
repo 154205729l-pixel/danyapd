@@ -4,8 +4,8 @@
 html, body {
   height: 100%;
   font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
-  background: #0a0e17;
-  color: #e8e8e8;
+  background: #f5f5f5;
+  color: #1a1a1a;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -29,8 +29,8 @@ html, body {
 
 .start-badge {
   display: inline-block;
-  background: rgba(34, 197, 94, 0.15);
-  color: #22c55e;
+  background: rgba(48, 181, 68, 0.12);
+  color: #30B544;
   font-size: 13px;
   padding: 6px 14px;
   border-radius: 20px;
@@ -43,14 +43,12 @@ html, body {
   font-weight: 800;
   line-height: 1.3;
   margin-bottom: 12px;
-  background: linear-gradient(135deg, #fff 0%, #a0aec0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #1a1a1a;
 }
 
 .start-subtitle {
   font-size: 15px;
-  color: #8892a4;
+  color: #888;
   line-height: 1.6;
   margin-bottom: 40px;
   max-width: 300px;
@@ -67,11 +65,11 @@ html, body {
 .start-stats .stat-num {
   font-size: 28px;
   font-weight: 700;
-  color: #22c55e;
+  color: #30B544;
 }
 .start-stats .stat-label {
   font-size: 12px;
-  color: #6b7280;
+  color: #999;
   margin-top: 4px;
 }
 
@@ -84,10 +82,10 @@ html, body {
   font-size: 18px;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: linear-gradient(135deg, #30B544, #28993a);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 4px 20px rgba(48, 181, 68, 0.3);
 }
 .btn-start:active {
   transform: scale(0.97);
@@ -96,7 +94,7 @@ html, body {
 .start-footer {
   margin-top: 24px;
   font-size: 12px;
-  color: #4b5563;
+  color: #bbb;
 }
 
 /* ========== 答题页 ========== */
@@ -113,8 +111,9 @@ html, body {
   left: 0;
   right: 0;
   z-index: 20;
-  background: #0a0e17;
+  background: #fff;
   padding: 16px 24px 0;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
 }
 
 .quiz-header {
@@ -125,19 +124,19 @@ html, body {
 }
 .quiz-dim-label {
   font-size: 14px;
-  color: #22c55e;
+  color: #30B544;
   font-weight: 600;
 }
 .quiz-page-num {
   font-size: 13px;
-  color: #6b7280;
+  color: #999;
 }
 
 /* 进度条 */
 .progress-bar-bg {
   width: 100%;
   height: 4px;
-  background: #1e2736;
+  background: #e8e8e8;
   border-radius: 2px;
   margin-bottom: 0;
   overflow: hidden;
@@ -145,7 +144,7 @@ html, body {
 }
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #22c55e, #4ade80);
+  background: linear-gradient(90deg, #30B544, #5cd26a);
   border-radius: 2px;
   transition: width 0.4s ease;
 }
@@ -155,53 +154,97 @@ html, body {
   flex: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 64px 0 100px 0;
+  padding: 64px 4px 100px 4px;
 }
 
-/* 单题卡片 */
+/* ========== 帖子风格题目卡片 ========== */
 .question-card {
-  background: #151c28;
-  border: 1.5px solid #252d3a;
+  background: #fff;
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 16px;
-  transition: border-color 0.3s;
+  transition: box-shadow 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 .question-card.answered {
-  border-color: rgba(34, 197, 94, 0.3);
+  box-shadow: 0 1px 4px rgba(48, 181, 68, 0.15);
 }
 .question-card.highlight {
-  border-color: #f59e0b;
+  box-shadow: 0 0 0 2px #30B544;
   animation: pulse-border 1s ease;
 }
 
 @keyframes pulse-border {
-  0%, 100% { border-color: #f59e0b; }
-  50% { border-color: rgba(245, 158, 11, 0.3); }
+  0%, 100% { box-shadow: 0 0 0 2px #30B544; }
+  50% { box-shadow: 0 0 0 2px rgba(48, 181, 68, 0.3); }
 }
 
-.question-card .q-number {
+/* 帖子头部：头像 + 标题 + 时间 */
+.q-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.q-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  margin-right: 10px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.q-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.q-header-info {
+  display: flex;
+  flex-direction: column;
+}
+.q-title {
+  font-size: 15px;
+  color: #30B544;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.q-time {
   font-size: 12px;
-  color: #4b5563;
-  margin-bottom: 8px;
+  color: #bbb;
+  margin-top: 2px;
 }
 
-.question-card .q-title {
-  font-size: 13px;
-  color: #22c55e;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.question-card .q-text {
+/* 帖子正文 */
+.q-text {
   font-size: 17px;
   font-weight: 700;
-  line-height: 1.5;
-  margin-bottom: 16px;
-  color: #f1f5f9;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  color: #1a1a1a;
 }
 
-.question-card .q-options {
+/* 分隔引导：绿色竖线 + "你会选择：" */
+.q-divider {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.q-divider-bar {
+  width: 3px;
+  height: 18px;
+  background: #30B544;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+.q-divider-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* 选项区 */
+.q-options {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -212,12 +255,12 @@ html, body {
   width: 100%;
   text-align: left;
   padding: 14px 16px;
-  background: #0d1320;
-  border: 1.5px solid #252d3a;
+  background: #f5f5f5;
+  border: 1.5px solid #e8e8e8;
   border-radius: 12px;
   font-size: 14px;
   line-height: 1.5;
-  color: #d1d5db;
+  color: #333;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -226,12 +269,12 @@ html, body {
 }
 
 .option-btn.selected {
-  background: rgba(34, 197, 94, 0.12);
-  border-color: #22c55e;
+  background: #30B544;
+  border-color: #30B544;
   color: #fff;
 }
 
-/* 底部固定按钮 */
+/* ========== 底部固定按钮 ========== */
 .quiz-footer {
   position: fixed;
   bottom: 0;
@@ -239,7 +282,7 @@ html, body {
   right: 0;
   padding: 16px 24px;
   padding-bottom: calc(16px + env(safe-area-inset-bottom));
-  background: linear-gradient(to top, #0a0e17 60%, transparent);
+  background: linear-gradient(to top, #f5f5f5 60%, transparent);
   z-index: 10;
 }
 
@@ -251,18 +294,17 @@ html, body {
 .btn-prev {
   flex-shrink: 0;
   padding: 16px 24px;
-  border: 1.5px solid #252d3a;
+  border: 1.5px solid #ddd;
   border-radius: 12px;
   font-size: 15px;
   font-weight: 600;
-  color: #8892a4;
-  background: transparent;
+  color: #888;
+  background: #fff;
   cursor: pointer;
-  transition: transform 0.2s, border-color 0.2s;
+  transition: transform 0.2s;
 }
 .btn-prev:active {
   transform: scale(0.97);
-  border-color: #4b5563;
 }
 
 .btn-next {
@@ -273,10 +315,10 @@ html, body {
   font-size: 17px;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: linear-gradient(135deg, #30B544, #28993a);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 4px 20px rgba(48, 181, 68, 0.3);
 }
 .btn-next:active {
   transform: scale(0.97);
@@ -288,9 +330,8 @@ html, body {
   bottom: 100px;
   left: 50%;
   transform: translateX(-50%) translateY(20px);
-  background: rgba(30, 39, 54, 0.95);
-  border: 1px solid #374151;
-  color: #f1f5f9;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
   font-size: 14px;
   padding: 12px 24px;
   border-radius: 10px;
@@ -315,8 +356,8 @@ html, body {
 
 .result-badge {
   display: inline-block;
-  background: rgba(34, 197, 94, 0.15);
-  color: #22c55e;
+  background: rgba(48, 181, 68, 0.12);
+  color: #30B544;
   font-size: 13px;
   padding: 6px 16px;
   border-radius: 20px;
@@ -326,7 +367,7 @@ html, body {
 
 .result-type {
   font-size: 14px;
-  color: #6b7280;
+  color: #999;
   margin-bottom: 8px;
   letter-spacing: 2px;
 }
@@ -335,21 +376,19 @@ html, body {
   font-size: 36px;
   font-weight: 800;
   margin-bottom: 8px;
-  background: linear-gradient(135deg, #fff 0%, #a0aec0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #1a1a1a;
 }
 
 .result-star {
   font-size: 15px;
-  color: #22c55e;
+  color: #30B544;
   margin-bottom: 24px;
 }
 
 .result-tagline {
   font-size: 18px;
   font-weight: 600;
-  color: #f1f5f9;
+  color: #1a1a1a;
   line-height: 1.5;
   margin-bottom: 32px;
   max-width: 320px;
@@ -374,15 +413,15 @@ html, body {
   text-align: right;
 }
 .dim-label.active {
-  color: #22c55e;
+  color: #30B544;
 }
 .dim-label.inactive {
-  color: #4b5563;
+  color: #ccc;
 }
 .dim-bar-bg {
   flex: 1;
   height: 8px;
-  background: #1e2736;
+  background: #e8e8e8;
   border-radius: 4px;
   margin: 0 10px;
   overflow: hidden;
@@ -390,22 +429,22 @@ html, body {
 }
 .dim-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #22c55e, #4ade80);
+  background: linear-gradient(90deg, #30B544, #5cd26a);
   border-radius: 4px;
   transition: width 0.6s ease;
 }
 .dim-pct {
   width: 40px;
   font-size: 13px;
-  color: #6b7280;
+  color: #999;
 }
 
 /* 付费墙 */
 .paywall {
   width: 100%;
   max-width: 340px;
-  background: #151c28;
-  border: 1px solid #252d3a;
+  background: #fff;
+  border: 1px solid #e8e8e8;
   border-radius: 16px;
   padding: 24px 20px;
   margin-bottom: 28px;
@@ -413,7 +452,7 @@ html, body {
 .paywall-title {
   font-size: 16px;
   font-weight: 700;
-  color: #f1f5f9;
+  color: #1a1a1a;
   margin-bottom: 16px;
 }
 .btn-unlock {
@@ -424,18 +463,18 @@ html, body {
   font-size: 15px;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: linear-gradient(135deg, #30B544, #28993a);
   cursor: pointer;
   margin-bottom: 10px;
 }
 .btn-unlock-pay {
   width: 100%;
   padding: 14px 0;
-  border: 1px solid #252d3a;
+  border: 1px solid #e8e8e8;
   border-radius: 10px;
   font-size: 15px;
   font-weight: 600;
-  color: #8892a4;
+  color: #888;
   background: transparent;
   cursor: pointer;
 }
@@ -452,30 +491,30 @@ html, body {
 .full-result.show { display: block; }
 
 .full-result-card {
-  background: #151c28;
-  border: 1px solid #252d3a;
+  background: #fff;
+  border: 1px solid #e8e8e8;
   border-radius: 16px;
   padding: 24px 20px;
 }
 .full-result-label {
   font-size: 13px;
-  color: #22c55e;
+  color: #30B544;
   font-weight: 600;
   margin-bottom: 12px;
 }
 .full-result-text {
   font-size: 15px;
   line-height: 1.8;
-  color: #d1d5db;
+  color: #333;
 }
 
 /* 重测 */
 .btn-retry {
   padding: 14px 48px;
-  border: 1px solid #252d3a;
+  border: 1px solid #e8e8e8;
   border-radius: 10px;
   font-size: 15px;
-  color: #8892a4;
+  color: #888;
   background: transparent;
   cursor: pointer;
   margin-top: 12px;
